@@ -1,9 +1,19 @@
 Qualitest
 
+https://blog.quastor.org/p/architecture-web-browsers
+    https://medium.com/@duartekevin91/basics-of-understanding-chromes-v8-engine-c5c8ec61fa6b
+
+JIT
 
 
-Is JavaScript is Synchronous or Asynchronous 
-What is EventLoop
+Q)Is JavaScript is Synchronous or Asynchronous 
+A)
+Q)What is EventLoop
+"Event Loop" adds the call to "Event Que"/"Callback Que"
+"Event Loop" monitors "Call Stack"
+"Event Loop" removes the call from "Event Que" and moves it to Call Stack.
+
+
 What is the output of below code
 console.log(‘hi’)
 
@@ -13,17 +23,23 @@ console.log(‘user’);
 
 },100);
 
-console.log(‘bye’)
+console.log(‘bye’);
 
 
 
 How many ways you can Create an Object - Write the code
-Input: 
+There are different ways to create new objects:
 
+Create a single object, using an object literal.
+Create a single object, with the keyword new.
+Define an object constructor, and then create objects of the constructed type.
+Create an object using Object.create().var x=Object.create();
+
+
+Input: 
 		var array = [1,2,3]
 
 		var array1 = [4,5,6]
-
 
 
 		output = [1,2,3,4,5,6]
@@ -32,27 +48,34 @@ Input:
 
 	How to write a function to accept n number of parameters, and gives	the output as sum of the numbers
 
-
-
 	sum(1,2) = output - 3
 
 	sum(4,5,7,9) = output - 25 
 
+    function sum(){
+        //add all of the args.
+        //arguments[] 
+    }
+
 How Can you create an object with Key value Pairs - Show the code 
+    Look up...
+    obj={};
+    obj[prop1]=val1;
+
 How can you Destructure an Object - take the previous created object and destructure  from that
+... operator.
+const {var1,var2}=obj;
+
 How can you change the Name of the Key while Destructuring
+const abs = { name:"Jhon", age:"40", country:'IND' };
+const { name:sname,...otherDetails } = abs;
+console.log(sname)
+console.log(name);
+console.log(otherDetails);
+
+
 Tech Mahindra
-
-
-
-
-
-
-
 JavaScript
-
-
-
 What is ES6 and its Features 
 -https://www.boardinfinity.com/blog/top-10-features-of-es6/
 
@@ -61,12 +84,10 @@ Output of the code
 console.log(isInt(4)); // true
 console.log(isInt(12.2)); // flase
 console.log(isInt(0.3)); // false
+IND..
 
 
 CSS
-
-
-
 What is Selectors in CSS -  (ID, Class)
 What is Pseudo Class in CSS - (:hover, :active)
 https://www.w3schools.com/css/css_pseudo_classes.asp
@@ -86,8 +107,6 @@ JadeGlobal
 
 
 Task
-
-
 
 Create a component 
 
@@ -113,6 +132,22 @@ function(add(2)(5)(8)(4)());
 
 
 Write code for to accept n number of arguments and it should return sum of all the arguments
+function sum(currentNumber) {
+    var total = currentNumber;
+    var func = function (nextNumber) {
+        if (nextNumber) {
+            total += nextNumber;
+            return func;
+        }
+        else {
+            return total;
+        }
+    };
+    return func;
+}
+
+console.log(sum(2)(5)(2)(5)());
+
 
 
 
@@ -125,8 +160,7 @@ Goodwork Labs
 
 
 
-String = “abc@hy!ze@”,
-
+String = “abc@hyd!ze@”,
 
 
 Write code for Reverse the string and the special characters should be in the same positions
