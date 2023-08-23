@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript async / await</h2>
+    <h2 style="color: red;">Open the blow link and paste all the content from this file....</h2>
+    <h2> https://www.w3schools.com/js/tryit.asp?filename=tryjs_async2</h2>
+
+    <p id="demo"></p>
+    <p id="foot"></p>
+
+    <script>
+        async function getFile() {
+            let myPromise = new Promise(function (resolve) {
+                let req = new XMLHttpRequest();
+                req.open('GET', "mycar.html");
+                req.onload = function () {
+                    setTimeout(function () {
+                        if (req.status == 200) {
+                            resolve(req.response);
+                        } else {
+                            resolve("File not Found");
+                        }
+
+                    }, 5000);
+                };
+                req.send();
+            });
+
+            myPromise.then(function (x) {
+                document.getElementById("demo").innerHTML = x;
+            });
+            //document.getElementById("demo").innerHTML = await myPromise
+            document.getElementById("foot").innerHTML = "after await - shown after Promise is completed"
+
+
+        }
+
+        getFile();
+
+        document.getElementById("demo").innerHTML = "Loading..."
+    </script>
+
+</body>
+
+</html>
