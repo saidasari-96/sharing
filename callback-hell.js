@@ -43,16 +43,29 @@ prom.then(function (user) {
     return Promise.resolve("sliced beef");
 }).then(function (slicedBeef) {
     console.log(`Cooking ${slicedBeef}`);
-    //return "cooked beef";
-    return Promise.reject(); //TODO error handling in promise..
+    return "cooked beef";
+    //return Promise.resolve("cooked beef");
+    //x=y-z; // exception.
+    //throw "cooking error.."; //exception
+    //Promise.reject('xyz'); //TODO
+   // return Promise.reject(); //
+   //no return statement //equivalent to below.
+   //return; // equalent to below
+   //return Promise.resolve(); //implicit when there is no error..
+}).catch(function(err){
+    console.log('got you in catch block for Cooking..');
+    console.error(err);
 }).then(function (cookedBeef) {
     console.log(`Putting ${cookedBeef} on the plate`);
     console.log('Beef on plate');
-}, function(err){
-    console.log('got you in reject callback..');
 }).catch(function(err){
     console.log('got you in catch block..');
+    console.error(err);
 });
+
+// , function(err){
+//     console.log('got you in reject callback..');
+// }
 
 
 
