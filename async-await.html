@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript async / await</h2>
+    <h2 style="color: red;">Open the blow link and paste all the content from this file....</h2>
+    <h2> https://www.w3schools.com/js/tryit.asp?filename=tryjs_async2</h2>
+
+    <p id="demo"></p>
+    <p id="foot"></p>
+    <p id="foot2"></p>
+
+    <script>
+        async function getFile() {
+              
+            let internalPromise = new Promise(function (resolve, reject) {
+                let req = new XMLHttpRequest();
+                req.open('GET', "mycar.html");
+                req.onload = function () {
+                    document.getElementById("demo").innerHTML = req.response;
+                    /*if (req.status == 200) {
+                        return Promise.resolve("File Found..");
+                    } else {
+                        return Promise.reject("File not Found");
+                    }
+                    */
+                    debugger;
+                    setTimeout(function () {
+                    debugger;
+                        if (req.status == 200) {
+                        resolve();
+                            //resolve("File found");
+                        } else {
+                            reject();
+                            //reject("File not Found");
+                        }
+                    }, 5000);
+                };
+                req.send();
+            });
+
+            /*
+            //case1: without blocking the promise caller
+            myPromise.then(function (x) {
+                document.getElementById("demo").innerHTML = x;
+            });
+*/
+            //case2: blocking the promise caller
+            //document.getElementById("demo").innerHTML = await myPromise;
+            await internalPromise; //wait for internal task to signal external consumer...
+            //return myPromise;
+            document.getElementById("foot").innerHTML = "after await - shown after Promise is fulfilled"
+            
+            return Promise.resolve("File Found");
+        }
+		//document.getElementById("foot2").innerHTML=getFile();
+        getFile().then(function (data) {
+            document.getElementById("foot2").innerHTML = data;
+        }, function (err) {
+            document.getElementById("foot2").innerHTML = err;
+        });
+
+        document.getElementById("demo").innerHTML = "Loading..."
+    </script>
+
+</body>
+
+</html>

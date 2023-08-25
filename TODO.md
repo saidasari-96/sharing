@@ -1,3 +1,11 @@
+Callback hell
+Promice
+Promice chain
+Async & await..
+
+
+
+
 Qualitest
 
 https://blog.quastor.org/p/architecture-web-browsers
