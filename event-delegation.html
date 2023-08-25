@@ -1,0 +1,39 @@
+<html>
+
+
+<body>
+    <div id="container">
+        <button>Click me!</button>
+    </div>
+    <pre id="output"></pre>
+    <script>
+        const output = document.querySelector("#output");
+        function handleClick(e) {
+            output.textContent += `You clicked on a ${e.currentTarget.tagName} element\n`;
+            if (e.currentTarget.tagName == 'DIV') {
+                e.stopPropagation();
+            }
+        }
+
+        const container = document.querySelector("#container");
+        const button = document.querySelector("button");
+
+        document.body.addEventListener("click", handleClick, true);
+        container.addEventListener("click", handleClick, false);
+        button.addEventListener("click", handleClick, true);
+        //body div 
+        //target 
+        //div body
+
+        setTimeout(function () {
+            const button = document.querySelector("button");
+            button.dispatchEvent(new Event('click'));
+        }, 5000);
+// event, propagation/delegation, trigger, nesting heirarchy, bubbling/capturing(tunnling) type of propagation.
+// for any DOM event, the event is passed from to root-element to the target is called(capture phase), 
+// target phase, form there to root element is called Bubbling phase.
+
+    </script>
+</body>
+
+</html>
